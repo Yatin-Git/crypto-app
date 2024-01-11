@@ -7,20 +7,20 @@ import ErrorComponent from "./ErrorComponent";
 import CoinCard from "./CoinCard";
 
 const Coins = () => {
-    const [coins, setCoins] = useState([]);
+  const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [currency, setCurrency] = useState("inr");
 
   const currencySymbol =
-  currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
+    currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
 
-const changePage = (page) => {
-  setPage(page);
-  setLoading(true);
-};
-const btns = new Array(132).fill(1);
+  const changePage = (page) => {
+    setPage(page);
+    setLoading(true);
+  };
+  const btns = new Array(132).fill(1);
   useEffect(() => {
     const fetchCoins = async () => {
       try {
@@ -37,8 +37,7 @@ const btns = new Array(132).fill(1);
     fetchCoins();
   }, [currency, page]);
 
-  if (error)
-  return <ErrorComponent message={"Error While Fetching Coins"} />;
+  if (error) return <ErrorComponent message={"Error While Fetching Coins"} />;
 
   return (
     <Container maxW={"container.xl"}>
